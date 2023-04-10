@@ -3,6 +3,10 @@
 github.com/cpuguy83/go-md2man/v2/md2man
 # github.com/pimvanhespen/go-pi-lcd1602 v0.0.0-20190131141158-a63b4ce9c9e1
 ## explicit
+github.com/pimvanhespen/go-pi-lcd1602
+github.com/pimvanhespen/go-pi-lcd1602/animations
+github.com/pimvanhespen/go-pi-lcd1602/stringutils
+github.com/pimvanhespen/go-pi-lcd1602/synchronized
 # github.com/rakyll/portmidi v0.0.0-20201020180702-d436ceaa537a
 ## explicit; go 1.14
 github.com/rakyll/portmidi
@@ -26,6 +30,7 @@ github.com/sirupsen/logrus
 github.com/speps/go-hashids
 # github.com/stianeikeland/go-rpio v4.2.0+incompatible
 ## explicit
+github.com/stianeikeland/go-rpio
 # github.com/urfave/cli v1.22.12
 ## explicit; go 1.11
 github.com/urfave/cli
