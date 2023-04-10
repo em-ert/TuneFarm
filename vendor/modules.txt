@@ -1,0 +1,36 @@
+# github.com/cpuguy83/go-md2man/v2 v2.0.2
+## explicit; go 1.11
+github.com/cpuguy83/go-md2man/v2/md2man
+# github.com/pimvanhespen/go-pi-lcd1602 v0.0.0-20190131141158-a63b4ce9c9e1
+## explicit
+# github.com/rakyll/portmidi v0.0.0-20201020180702-d436ceaa537a
+## explicit; go 1.14
+github.com/rakyll/portmidi
+# github.com/russross/blackfriday/v2 v2.1.0
+## explicit
+github.com/russross/blackfriday/v2
+# github.com/schollz/gobrain v0.0.0-20170902133839-52144c80d197
+## explicit
+github.com/schollz/gobrain
+# github.com/schollz/pianoai v1.0.0
+## explicit
+github.com/schollz/pianoai/ai2
+github.com/schollz/pianoai/music
+github.com/schollz/pianoai/piano
+github.com/schollz/pianoai/player
+# github.com/sirupsen/logrus v1.9.0
+## explicit; go 1.13
+github.com/sirupsen/logrus
+# github.com/speps/go-hashids v2.0.0+incompatible
+## explicit
+github.com/speps/go-hashids
+# github.com/stianeikeland/go-rpio v4.2.0+incompatible
+## explicit
+# github.com/urfave/cli v1.22.12
+## explicit; go 1.11
+github.com/urfave/cli
+# golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8
+## explicit; go 1.17
+golang.org/x/sys/internal/unsafeheader
+golang.org/x/sys/unix
+golang.org/x/sys/windows
