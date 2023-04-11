@@ -1,6 +1,7 @@
 package main
 
 import (
+	"TuneFarm/gpio"
 	"fmt"
 	"os"
 	"time"
@@ -115,7 +116,9 @@ func main() {
 		p.AI.DisallowChords = !c.GlobalBool("chords")
 		p.ManualAI = c.GlobalBool("manual")
 		p.UseHostVelocity = c.GlobalBool("follow")
+		gpio.Run()
 		p.Start()
+
 		return nil
 	}
 

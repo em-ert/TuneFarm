@@ -16,7 +16,7 @@ var (
 	LED_ON = 15
 )
 
-func main() {
+func Run() {
 	lcdi := lcd1602.New(
 		LCD_RS,                                //rs
 		LCD_E,                                 //enable
