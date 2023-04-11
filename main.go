@@ -1,11 +1,11 @@
 package main
 
 import (
-	"TuneFarm/gpio"
 	"fmt"
 	"os"
 	"time"
 
+	"github.com/em-ert/TuneFarm/gpio"
 	"github.com/schollz/pianoai/ai2"
 	"github.com/schollz/pianoai/player"
 	"github.com/urfave/cli"
