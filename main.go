@@ -5,10 +5,10 @@ import (
 	"os"
 	"time"
 
+	"github.com/em-ert/tunefarm/gpio"
 	"github.com/schollz/pianoai/ai2"
 	"github.com/schollz/pianoai/player"
 	"github.com/urfave/cli"
-	"tunefarm.go/gpio"
 )
 
 var version string

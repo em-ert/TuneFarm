@@ -81,14 +81,14 @@ func (ai *AI) toggleLearning(l bool) {
 }
 
 func (ai *AI) encode(ints []int) string {
-	h := hashids.NewWithData(ai.hasher)
+	h, _ := hashids.NewWithData(ai.hasher)
 	e, _ := h.Encode(ints)
 	return e
 }
 
-func (ai *AI) decode(s string) []int {
-	h := hashids.NewWithData(ai.hasher)
-	return h.Decode(s)
+func (ai *AI) decode(s string) ([]int, error) {
+	h, _ := hashids.NewWithData(ai.hasher)
+	return h.DecodeWithError(s)
 }
 
 func (ai *AI) Learn(mus *music.Music) (err error) {

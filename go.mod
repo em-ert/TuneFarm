@@ -1,4 +1,4 @@
-module tunefarm.go
+module github.com/em-ert/tunefarm
 
 go 1.20
 
