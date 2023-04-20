@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteTargetsManager">
+    <targets>
+      <target name="pi@ourpi.local:22" type="ssh/sftp" uuid="306719d0-e89c-4295-a12c-03c68ca4b5f4">
+        <config>
+          <option name="projectRootOnTarget" value="/home/pi/tunefarm" />
+          <option name="serverName" value="pi@ourpi.local:22 password" />
+          <option name="useRsync" value="true" />
+        </config>
+        <ContributedStateBase type="GoLanguageRuntime">
+          <config>
+            <option name="goPath" value="/home/pi/go" />
+            <option name="goRoot" value="/usr/local/go/bin/go" />
+            <option name="goVersion" value="go1.20.2 linux/arm" />
+          </config>
+        </ContributedStateBase>
+      </target>
+    </targets>
+  </component>
+</project>

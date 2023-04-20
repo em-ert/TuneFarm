@@ -31,10 +31,14 @@ github.com/speps/go-hashids
 # github.com/stianeikeland/go-rpio v4.2.0+incompatible
 ## explicit
 github.com/stianeikeland/go-rpio
+# github.com/toxygene/gpiod-ky-040-rotary-encoder v1.0.4
+## explicit; go 1.20
 # github.com/urfave/cli v1.22.12
 ## explicit; go 1.11
 github.com/urfave/cli
-# golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8
+# github.com/ziutek/emgo v0.0.0-20211205205814-168ccc21e67c
+## explicit; go 1.16
+# golang.org/x/sys v0.3.0
 ## explicit; go 1.17
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix

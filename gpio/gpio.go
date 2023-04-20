@@ -6,17 +6,18 @@ import (
 	"time"
 )
 
+// Set the values of GPIO pins for the LCD
 var (
-	LCD_RS = 26
-	LCD_E  = 19
-	LCD_D4 = 13
-	LCD_D5 = 6
-	LCD_D6 = 5
-	LCD_D7 = 11
-	LED_ON = 15
+	LCD_RS = 26 // Register Select
+	LCD_E  = 19 // Enable
+	LCD_D4 = 13 // Data 4
+	LCD_D5 = 6  // Data 5
+	LCD_D6 = 5  // Data 6
+	LCD_D7 = 11 // Data 7
+	LED_ON = 15 // LED on/off (not used)
 )
 
-func Run() {
+func LCD() {
 	lcdi := lcd1602.New(
 		LCD_RS,                                //rs
 		LCD_E,                                 //enable
@@ -30,4 +31,8 @@ func Run() {
 	lcd.WriteLines("I guess", "we'll see...")
 	lcd.Clear()
 	lcd.Close()
+}
+
+func Rotary() {
+
 }

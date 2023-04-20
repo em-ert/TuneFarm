@@ -5,7 +5,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/em-ert/TuneFarm/gpio"
 	"github.com/schollz/pianoai/ai2"
 	"github.com/schollz/pianoai/player"
 	"github.com/urfave/cli"
@@ -116,7 +115,7 @@ func main() {
 		p.AI.DisallowChords = !c.GlobalBool("chords")
 		p.ManualAI = c.GlobalBool("manual")
 		p.UseHostVelocity = c.GlobalBool("follow")
-		gpio.Run()
+		// gpio.Run()
 		p.Start()
 
 		return nil
