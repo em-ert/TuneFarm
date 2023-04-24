@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"os"
+	"os/exec"
 	"time"
 
 	"github.com/schollz/pianoai/ai2"
@@ -13,7 +16,37 @@ import (
 var version string
 
 func main() {
+	cmd := exec.Command("python3", "../../tuneHat/main.py")
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		panic(err)
+	}
+	stderr, err := cmd.StderrPipe()
+	if err != nil {
+		panic(err)
+	}
+	// err = cmd.Start()
+	err = cmd.Run()
+	if err != nil {
+		panic(err)
+	}
 
+	// go copyOutput(stdout)
+	// go copyOutput(stderr)
+
+	// cmd.Wait()
+
+	pianoAI()
+}
+
+func copyOutput(r io.Reader) {
+	scanner := bufio.NewScanner(r)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+}
+
+func pianoAI() {
 	app := cli.NewApp()
 	app.Version = version
 	app.Compiled = time.Now()

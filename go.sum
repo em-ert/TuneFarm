@@ -30,6 +30,8 @@ github.com/stretchr/testify v1.7.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO+kdMU+MU=
 github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKsk=
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
+github.com/tliron/py4go v0.0.0-20211224192835-798131e31c5b h1:n/uQUqGLvNpjN4o0lvpdGfRRcDOn5iWzCKP2QSPwwEQ=
+github.com/tliron/py4go v0.0.0-20211224192835-798131e31c5b/go.mod h1:PxsXV95eFcPYlpqikubOACNXjOyB/KicZkHadEBr66k=
 github.com/toxygene/gpiod-ky-040-rotary-encoder v1.0.4 h1:MEN/mpd1+U+4xmeYh25Gf/Ux5gnLy9QSPG8zjoc2am4=
 github.com/toxygene/gpiod-ky-040-rotary-encoder v1.0.4/go.mod h1:WYMTnMxf3RjRsLn9eTUX0bd1hMOPCacBoAWJaRY23yg=
 github.com/urfave/cli v1.22.12 h1:igJgVw1JdKH+trcLWLeLwZjU9fEfPesQ+9/e4MQ44S8=
