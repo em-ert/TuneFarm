@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"os/exec"
+	"strconv"
 	"time"
 
 	"github.com/schollz/pianoai/ai2"
@@ -13,29 +14,20 @@ import (
 	"github.com/urfave/cli"
 )
 
-var version string
+var (
+	version  string
+	BPM      = 120
+	DEBUG    = false
+	MANUAL   = false
+	JAZZY    = false
+	STACCATO = false
+	CHORDS   = false
+	FOLLOW   = false
+)
 
 func main() {
-	cmd := exec.Command("python3", "../../tuneHat/main.py")
-	stdout, err := cmd.StdoutPipe()
-	if err != nil {
-		panic(err)
-	}
-	stderr, err := cmd.StderrPipe()
-	if err != nil {
-		panic(err)
-	}
-	// err = cmd.Start()
-	err = cmd.Run()
-	if err != nil {
-		panic(err)
-	}
-
-	// go copyOutput(stdout)
-	// go copyOutput(stderr)
-
-	// cmd.Wait()
-
+	menu()
+	readSettings()
 	pianoAI()
 }
 
@@ -46,7 +38,70 @@ func copyOutput(r io.Reader) {
 	}
 }
 
+// Function that runs the Python code from Go and send the output to stdout and error to stderr
+// Partially taken from here https://stackoverflow.com/questions/41415337/running-external-python-in-golang-catching-continuous-exec-command-stdout
+// Specifically, the answer written by minimijoyo (https://stackoverflow.com/users/7357841/minamijoyo)
+func menu() {
+	defer fmt.Println("Running PianoAI...")
+	// defer wg.Done()
+
+	cmd := exec.Command("python3", "../../tuneHat/main.py")
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		panic(err)
+	}
+	stderr, err := cmd.StderrPipe()
+	if err != nil {
+		panic(err)
+	}
+
+	go copyOutput(stdout)
+	go copyOutput(stderr)
+
+	// err = cmd.Start()
+	err = cmd.Run()
+	if err != nil {
+		panic(err)
+	}
+}
+
+func readSettings() {
+
+	readFile, err := os.Open("../../tuneHat/Settings/user_settings.txt")
+	defer func(readFile *os.File) {
+		err := readFile.Close()
+		if err != nil {
+
+		}
+	}(readFile)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+	fileScanner := bufio.NewScanner(readFile)
+	fileScanner.Split(bufio.ScanLines)
+	var fileLines []string
+
+	for fileScanner.Scan() {
+		fileLines = append(fileLines, fileScanner.Text())
+	}
+
+	for _, line := range fileLines {
+		fmt.Println(line)
+	}
+
+	BPM, _ = strconv.Atoi(fileLines[0])
+	DEBUG, _ = strconv.ParseBool(fileLines[1])
+	MANUAL, _ = strconv.ParseBool(fileLines[2])
+	JAZZY, _ = strconv.ParseBool(fileLines[3])
+	STACCATO, _ = strconv.ParseBool(fileLines[4])
+	CHORDS, _ = strconv.ParseBool(fileLines[5])
+	FOLLOW, _ = strconv.ParseBool(fileLines[6])
+}
+
+// Also from minimijoyo's stackoverflow answer
 func pianoAI() {
+
 	app := cli.NewApp()
 	app.Version = version
 	app.Compiled = time.Now()
@@ -135,7 +190,7 @@ func pianoAI() {
 
 	 Lets play some music!
 											`)
-		p, err := player.New(c.GlobalInt("bpm"), c.GlobalInt("tick"), c.GlobalBool("debug"))
+		p, err := player.New(BPM, c.GlobalInt("tick"), DEBUG)
 		if err != nil {
 			return
 		}
@@ -143,12 +198,12 @@ func pianoAI() {
 		p.AI = ai2.New(p.TicksPerBeat)
 		p.AI.HighPassFilter = c.GlobalInt("hp")
 		p.AI.LinkLength = c.GlobalInt("link")
-		p.AI.Jazzy = c.GlobalBool("jazzy")
-		p.AI.Stacatto = c.GlobalBool("stacatto")
-		p.AI.DisallowChords = !c.GlobalBool("chords")
-		p.ManualAI = c.GlobalBool("manual")
-		p.UseHostVelocity = c.GlobalBool("follow")
-		// gpio.Run()
+		p.AI.Jazzy = JAZZY
+		p.AI.Stacatto = STACCATO
+		p.AI.DisallowChords = !CHORDS
+		p.ManualAI = MANUAL
+		p.UseHostVelocity = FOLLOW
+
 		p.Start()
 
 		return nil
